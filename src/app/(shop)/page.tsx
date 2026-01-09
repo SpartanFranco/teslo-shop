@@ -2,7 +2,6 @@ export const revalidate = 60;
 
 import { getPaginateProductsWithImages } from '@/src/actions';
 import { Pagination, ProductGrid, Title } from '@/src/components';
-import { redirect } from 'next/navigation';
 
 interface Props {
 	searchParams: Promise<{
@@ -16,9 +15,6 @@ export default async function Home({ searchParams }: Props) {
 		page: page ? parseInt(page) : 1,
 	});
 
-	if (products.length === 0) {
-		redirect('/');
-	}
 	return (
 		<>
 			<Title
@@ -28,7 +24,7 @@ export default async function Home({ searchParams }: Props) {
 			/>
 
 			<ProductGrid products={products} />
-			<Pagination totalPages={totalPages} />
+			{totalPages && <Pagination totalPages={totalPages} />}
 		</>
 	);
 }
