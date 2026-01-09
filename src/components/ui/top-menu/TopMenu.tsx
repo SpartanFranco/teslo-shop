@@ -7,9 +7,13 @@ import { Search, ShoppingCart } from 'lucide-react';
 import { titleFont } from '@/src/config/fonts';
 import { useCartStore, useUIStore } from '@/src/store';
 import { useLoaded } from '@/src/hooks';
-import type { Gender } from '@/src/interfaces';
+import type { Category, Gender } from '@/src/interfaces';
 
 type CategoryGender = Exclude<Gender, 'unisex'>;
+
+interface Props {
+	categories: Category[];
+}
 
 const categoriesPath: Record<CategoryGender, string> = {
 	men: 'Hombres',
@@ -17,7 +21,7 @@ const categoriesPath: Record<CategoryGender, string> = {
 	kid: 'Niños',
 };
 
-export const TopMenu = () => {
+export const TopMenu = ({ categories }: Props) => {
 	const openSideMenu = useUIStore((state) => state.openSideMenu);
 	const totalItems = useCartStore((state) => state.getTotalItems());
 
@@ -38,13 +42,13 @@ export const TopMenu = () => {
 			</Link>
 
 			<div className='hidden items-center gap-2 sm:flex'>
-				{Object.entries(categoriesPath).map(([gender, label]) => {
-					const href = `/gender/${gender}`;
+				{categories?.map(({ id, name }) => {
+					const href = `/gender/${name}`;
 					const isActive = pathname === href;
 
 					return (
 						<Link
-							key={gender}
+							key={id}
 							href={href}
 							className={`rounded-md px-3 py-2 text-sm transition-all ${
 								isActive
@@ -52,7 +56,7 @@ export const TopMenu = () => {
 									: 'text-gray-700 hover:bg-gray-100'
 							}`}
 						>
-							{label}
+							{name}
 						</Link>
 					);
 				})}
@@ -60,12 +64,12 @@ export const TopMenu = () => {
 
 			{/* Actions */}
 			<div className='flex items-center'>
-				<Link
+				{/* <Link
 					href='/search'
 					className='mx-2'
 				>
 					<Search className='h-5 w-5' />
-				</Link>
+				</Link> */}
 
 				<Link
 					href={totalItems === 0 && isLoaded ? '/empty' : '/cart'}
