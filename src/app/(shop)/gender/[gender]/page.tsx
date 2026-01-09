@@ -45,7 +45,7 @@ export default async function CategoryByIdPage({
 			/>
 
 			<ProductGrid products={products} />
-			<Pagination totalPages={totalPages} />
+			{totalPages && <Pagination totalPages={totalPages} />}
 		</>
 	);
 }
