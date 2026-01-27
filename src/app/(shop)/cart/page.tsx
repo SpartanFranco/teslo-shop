@@ -10,8 +10,8 @@ export default function CartPage() {
 	// redirect('/empty');
 
 	return (
-		<div className='mb-72 flex items-center justify-center px-10 sm:px-0'>
-			<div className='flex w-250 flex-col'>
+		<div className='flex items-center justify-center px-0 md:mb-72 lg:px-10'>
+			<div className='flex flex-col lg:w-250'>
 				<Title title='Carrito' />
 
 				<div className='grid grid-cols-1 gap-10 sm:grid-cols-2'>
