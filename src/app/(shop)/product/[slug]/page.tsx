@@ -11,6 +11,7 @@ import {
 import { getProductBySlug } from '@/src/actions';
 import { Metadata, ResolvingMetadata } from 'next';
 import { AddToCart } from './ui/add-to-cart';
+import { sleep } from '@/src/utils';
 
 interface Props {
 	params: Promise<{
@@ -36,6 +37,7 @@ export const generateMetadata = async (
 };
 
 export default async function ProductPage({ params }: Props) {
+	await sleep(100);
 	const { slug } = await params;
 	const product = await getProductBySlug(slug);
 
