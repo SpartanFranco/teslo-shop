@@ -1,26 +1,54 @@
 {
-  "name": "teslo-shop",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.1.5",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.5",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+	"name": "teslo-shop",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint",
+		"postinstall": "prisma generate",
+		"format": "prettier --write .",
+		"check-format": "prettier --check .",
+		"seed": "tsx ./src/seed/seed-database.ts"
+	},
+	"prisma": {
+		"seed": "tsx ./src/seed/seed-database.ts"
+	},
+	"dependencies": {
+		"@neondatabase/serverless": "^1.0.2",
+		"@paypal/react-paypal-js": "^8.9.2",
+		"@prisma/adapter-pg": "^7.2.0",
+		"@prisma/client": "^7.2.0",
+		"bcryptjs": "^3.0.3",
+		"cloudinary": "^2.8.0",
+		"clsx": "^2.1.1",
+		"dotenv": "^17.2.3",
+		"lucide-react": "^0.562.0",
+		"next": "16.1.1",
+		"next-auth": "5.0.0-beta.30",
+		"pg": "^8.16.3",
+		"react": "19.2.3",
+		"react-dom": "19.2.3",
+		"react-hook-form": "^7.70.0",
+		"swiper": "^12.0.3",
+		"zod": "^4.3.5",
+		"zustand": "^5.0.9"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/pg": "^8.16.0",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "16.1.1",
+		"prettier": "3.7.4",
+		"prettier-plugin-tailwindcss": "0.7.2",
+		"prisma": "^7.2.0",
+		"tailwindcss": "^4",
+		"tsx": "^4.21.0",
+		"typescript": "^5"
+	}
 }
