@@ -6,6 +6,7 @@ import { CartProduct } from '@/src/interfaces';
 import { useCartStore } from '@/src/store';
 import { currencyFormat } from '@/src/utils';
 import Link from 'next/link';
+import { ProductsInCartSkeleton } from './products-in-cart-skeleton';
 
 export const ProductsInCart = () => {
 	const isLoaded = useLoaded();
@@ -16,7 +17,7 @@ export const ProductsInCart = () => {
 	const productsInCart = useCartStore((state) => state.cart);
 
 	if (!isLoaded) {
-		return <h2>Cargando...</h2>;
+		return <ProductsInCartSkeleton />;
 	}
 
 	const updateProduct = (product: CartProduct) => (quantity: number) =>

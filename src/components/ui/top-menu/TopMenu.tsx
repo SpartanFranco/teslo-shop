@@ -46,7 +46,7 @@ export const TopMenu = () => {
 						<Link
 							key={c}
 							href={href}
-							className={`rounded-md px-3 py-2 text-sm transition-all ${
+							className={`text-md rounded-md px-3 py-2 transition-all ${
 								isActive
 									? 'bg-gray-900 text-white'
 									: 'text-gray-700 hover:bg-gray-100'
